@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<style>
+  .equal{
+    height: 120px;
+  }
+
+</style>
+   
+<body class=" bg-primary-subtle">
+ <div class="d-flex justify-content-center p-5 ">
+  <div class="mt-5 bg-dark bg-opacity-10 px-4 py-5 rounded-5">
+    <h4 class="text-primary">Simple Calculator</h4>
+    <input type="text" class="displayscreen  w-100 py-3 bg-dark border-0  rounded-2 text-white">
+    <table>
+      <tbody class="table-group-divider">
+        
+        <tr>
+          
+          <td ><button class="btn btnclear btn-dark h-100 w-100 p-4 text-danger"  type="button">C</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4 text-primary" type="button" value="/">/</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4 text-primary" type="button" value="*">x</button></td>
+          <td ><button class="btn btndelete btn-dark h-100 w-100 p-4 text-danger" type="button" value="">del</button></td>
+          
+        </tr>
+        <tr>
+          
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="7">7</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="8">8</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="9">9</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4 text-primary " type="button" value="-">-</button></td>
+          
+        </tr>
+        <tr>
+          
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="4">4</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="5">5</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="6">6</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4 text-primary" type="button" value="+">+</button></td>
+          
+          
+        </tr>
+        <tr>
+          
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="1">1</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="2">2</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="3">3</button></td>
+          <td rowspan="2" class="equal"><button class="btn btnequal border-0 btn-primary h-100 w-100 py-lg-5  " type="button">=</button></td>
+          
+          
+        </tr>
+        <tr>
+          
+          <td ><button class="btn btnum btnpercent btn-dark h-100 w-100 p-4 text-primary" type="button" value="">%</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4" type="button" value="0">0</button></td>
+          <td ><button class="btn btnum btn-dark h-100 w-100 p-4 text-primary" type="button" value=".">.</button></td>
+         
+          
+       
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  </div>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script>
+      let display = document.querySelector('.displayscreen');
+      let btn = document.querySelectorAll('.btnum');
+      let btnCleaner = document.querySelector(".btnclear");
+      let btnequal = document.querySelector('.btnequal');
+      let btndelete = document.querySelector('.btndelete');
+      let btnpercent = document.querySelector('.btnpercent');
+   
+      btn.forEach(function(button) {
+        button.addEventListener('click', (e)=> {
+          console.log(e.target.value);
+          let value = e.target.value;
+          display.value += value;
+        })
+        
+      });
+      btnCleaner.addEventListener('click',()=>{
+        display.value='';
+      })
+      btnequal.addEventListener('click',()=>{
+        if(display.value === ''){
+        display.value ='';
+        }
+      else{
+      
+      let  answer = eval(display.value);
+      display.value = answer;
+      
+      }
+
+      })
+      btnpercent.addEventListener('click',()=>{
+        let percentans= eval(display.value) / 100;
+        display.value= percentans ;
+
+      })
+      btndelete.addEventListener('click', ()=>{
+        display.value = display.value.slice(0,-1);
+      })
+   
+
+  </script>
+</body>
+</html>
